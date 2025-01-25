@@ -66,7 +66,7 @@ while True:
     if episode_length % steps == 0:
         model.low_lr(rate)
 
-    if (episode_length % 1000 == 0) and (episode_length > 20000):
+    if (episode_length % 2000 == 0) and (episode_length >= 20000):
         if dataset == 'cifar':
             model.eval()
             map = test_util.test(Dtest, model, batch_size, bit_len)
@@ -124,7 +124,6 @@ while True:
 
     model.step()
 
-    episode_length += 1
     if episode_length % 100 == 0:
         print(str(episode_length) + ' ' + str(final_loss.item()) + " " + str(loss_L.item()) + " " + str(
             loss_R.item()) + "\n")
@@ -145,5 +144,7 @@ while True:
 
     if episode_length == 10 * steps:
         break
+
+    episode_length += 1
 
 print("all over")
