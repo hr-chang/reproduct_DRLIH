@@ -130,7 +130,7 @@ while True:
             loss_R.item()) + "\n")
         file.close()
 
-        rewards_record.append(final_loss.item())
+        rewards_record.append(-final_loss.item())
 
     if episode_length % steps == 0:
         plt.plot(list(range(1, len(rewards_record) + 1)), rewards_record)
