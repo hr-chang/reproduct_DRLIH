@@ -36,12 +36,12 @@ bit_len = int(bit)
 flag = True
 
 if dataset=='cifar':
-	Dtest=Dataloader("/home/yezhaoda/TMM-Hash/resize64-rf-noncrop/test",0,5500,0,10)
-	traintest=Dataloader("/home/yezhaoda/TMM-Hash/resize64-rf-noncrop/train",0,500,0,10)
+	Dtest=Dataloader("test",0,5500,0,10)
+	traintest=Dataloader("train",0,500,0,10)
 	flag = False
 
 if dataset=='nus':
-	traintest=Dataloader("/home/zhangjian/workspace/dataset/NUS-WIDE/resize64-rf-noncrop/train",0,500,1,22,'nus')
+	traintest=Dataloader("train",0,500,1,22,'nus')
 	flag = False
 
 if dataset=='flk':
