@@ -70,6 +70,9 @@ while True:
         if dataset == 'cifar':
             model.eval()
             map = test_util.test(Dtest, model, batch_size, bit_len)
+
+            print('#### map=' + str(map) + '\n')
+
             file = open(logpath, "a")
             file.write('#### map=' + str(map) + '\n')
             file.close()
