@@ -66,19 +66,6 @@ while True:
     if episode_length % steps == 0:
         model.low_lr(rate)
 
-    if (episode_length % 2000 == 0) and (episode_length >= 20000):
-        if dataset == 'cifar':
-            model.eval()
-            map = test_util.test(Dtest, model, batch_size, bit_len)
-
-            print('#### map=' + str(map) + '\n')
-
-            file = open(logpath, "a")
-            file.write('#### map=' + str(map) + '\n')
-            file.close()
-        path = checkpoint_path + '/' + str(episode_length) + '.model';
-        torch.save(model.state_dict(), path)
-
     model.train()
 
     if dataset == 'cifar':
@@ -133,6 +120,19 @@ while True:
         file.close()
 
         rewards_record.append(-final_loss.item())
+
+    if (episode_length % 2000 == 0) and (episode_length >= 20000):
+        if dataset == 'cifar':
+            model.eval()
+            map = test_util.test(Dtest, model, batch_size, bit_len)
+
+            print('#### map=' + str(map) + '\n')
+
+            file = open(logpath, "a")
+            file.write('#### map=' + str(map) + '\n')
+            file.close()
+        path = checkpoint_path + '/' + str(episode_length) + '.model';
+        torch.save(model.state_dict(), path)
 
     if episode_length % steps == 0:
         plt.plot(list(range(1, len(rewards_record) + 1)), rewards_record)
