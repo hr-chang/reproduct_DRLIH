@@ -1,34 +1,29 @@
-# Introduction
-This is the source code of our TMM 2020 paper "Deep Reinforcement Learning for Image Hashing". Please cite the following paper if you use our code.
+# 依赖库列表以及其版本要求
 
-Yuxin Peng, Jian Zhang and Zhaoda Ye, "Deep Reinforcement Learning for Image Hashing", IEEE Transactions on Multimedia (TMM), Vol. 22, No. 8, pp. 2061-2073, Aug. 2020.(SCI, EI)
+```
+matplotlib==3.10.0
+numpy==1.23.0
+Pillow==11.1.0
+torch==2.5.0+cu121
+torchvision==0.20.0+cu121
+```
 
-# Dependency
+# 数据准备
 
-This code is implemented with pytorch.
+使用了预处理后的cifar10作为输入。
 
-# Data Preparation
+下载链接: https://pan.baidu.com/s/19LAa6f5OtXvDK-jOlV5_UA?pwd=8aia
 
-The codes takes the images of cifar10 as the input.
+也可直接联系本人 QQ: 178220929 （常昊冉）
 
-The data and the pre-trained model which can be download from the links:
+数据内容需分别放入 train 和 test 文件夹
 
-https://pan.baidu.com/s/1BWKRWJPQ5r-rP3H9MRXe6g 
+# 训练命令（含测试）
 
-password: 94a2
+格式：python train.py **gpu_id** bit_length batch_size dataset
 
-The images are organized as follows:
+例：
 
-./train/class_id/name_of_image
-
-./test/class_id/name_of_image
-
-# Usage
-
-Start training and tesing by executiving the following commands. This will train and test the model on Cifar10 datatset. 
-
+```
 python train.py 0 32 16 cifar
-
-train.py [gpu_id,bit_length,batch_size,dataset]
-
-
+```
